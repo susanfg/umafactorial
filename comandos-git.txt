@@ -271,7 +271,24 @@ To https://github.com/susanfg/umafactorial
 // 20. Creamos este fichero y lo añadimos al repositorio:
 susan@Susanas-MacBook umafactorial % touch comandos-git.txt
 susan@Susanas-MacBook umafactorial % git add comandos-git.txt
-susan@Susanas-MacBook umafactorial % 
 
-// 21. Después de editar este fichero hacemos un git commit -m 
+// 21. Después de editar este fichero, lo añadimos, fíjese que con el . Después de git add, añadimos todos los ficheros que hayan sido modificados. Después hacemos un git commit -m:
+susan@Susanas-MacBook umafactorial % git add .
+susan@Susanas-MacBook umafactorial % git commit -m "Adicion de historial de linea de comandos"
+[main da4be71] Adicion de historial de linea de comandos
+ 1 file changed, 277 insertions(+)
+ create mode 100644 comandos-git.txt
+
 // 22. Para finalizar, queremos que el resto de empleados dispongan del repositorio, sincronizamos todas las ramas del repositorio local con el repositorio de GitHub mediante el comando:
+susan@Susanas-MacBook umafactorial % git push --all origin
+Enumerando objetos: 4, listo.
+Contando objetos: 100% (4/4), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (3/3), listo.
+Escribiendo objetos: 100% (3/3), 3.65 KiB | 3.65 MiB/s, listo.
+Total 3 (delta 0), reusados 0 (delta 0), pack-reusados 0
+To https://github.com/susanfg/umafactorial
+   f02330f..da4be71  main -> main
+   e08f44f..f839ed4  recursivo -> recursivo
+ * [new branch]      refacIO -> refacIO
+susan@Susanas-MacBook umafactorial % 
