@@ -1,0 +1,277 @@
+Last login: Fri Feb 10 19:31:00 on ttys000
+
+// Primero vamos al directorio donde queremos clonar el repositorio
+susan@Susanas-MacBook ~ % cd Desktop
+susan@Susanas-MacBook Desktop % cd Ing_sw
+susan@Susanas-MacBook Ing_sw % cd Individual
+
+// 1. Clonamos el repositorio de GitHub en nuestro ordenador:
+susan@Susanas-MacBook Individual % git clone https://github.com/susanfg/umafactorial
+Clonando en 'umafactorial'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Recibiendo objetos: 100% (3/3), listo.
+
+// Cambiamos a la carpeta donde está el repositorio
+susan@Susanas-MacBook Individual % cd umafactorial
+
+// Ejecutamos git status para consultar el estado del repositorio y ver si esta todo bien
+susan@Susanas-MacBook umafactorial % git status
+En la rama main
+Tu rama está actualizada con 'origin/main'.
+
+nada para hacer commit, el árbol de trabajo está limpio
+
+// Con el comando touch creamos el fichero factorial.java
+susan@Susanas-MacBook umafactorial % touch factorial.java
+
+// 3. Tenemos que crear el fichero en la rama main, ya lo creamos y estamos en la rama main, lo añadimos con git add y dejamos un comentario con git commit:
+susan@Susanas-MacBook umafactorial % git add factorial.java
+susan@Susanas-MacBook umafactorial % git commit -m "implementacion inicial"
+[main e1469ff] implementacion inicial
+ 1 file changed, 10 insertions(+)
+ create mode 100644 factorial.java
+susan@Susanas-MacBook umafactorial % git status
+En la rama main
+Tu rama está adelantada a 'origin/main' por 1 commit.
+  (usa "git push" para publicar tus commits locales)
+
+nada para hacer commit, el árbol de trabajo está limpio
+
+// 4. Modificamos el archivo, lo guardamos y comentamos con git add y git commit
+susan@Susanas-MacBook umafactorial % git add factorial.java
+susan@Susanas-MacBook umafactorial % git commit -m "refactorizacion"
+[main 0376f67] refactorizacion
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+// 5. Enviamos los cambios en la rama actual al repositorio de GitHub con un git push, origin es el nombre que se le da al repositorio por defecto y main el nombre de la rama cuyos cambios enviamos:
+susan@Susanas-MacBook umafactorial % git push origin main
+Enumerando objetos: 7, listo.
+Contando objetos: 100% (7/7), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (6/6), listo.
+Escribiendo objetos: 100% (6/6), 806 bytes | 806.00 KiB/s, listo.
+Total 6 (delta 1), reusados 0 (delta 0), pack-reusados 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/susanfg/umafactorial
+   b44425e..0376f67  main -> main
+
+// 5. Creamos una nueva rama y cambiamos el espacio de trabajo a ella. Para cambiar el espacio de trabajo a otra rama usamos git checkout, y la opción -b para crear una nueva:
+susan@Susanas-MacBook umafactorial % git checkout -b recursivo
+Cambiado a nueva rama 'recursivo'
+
+// 6. y 7. Modificamos el fichero factorial.java, añadimos la modificación con git add y comentamos con git commit
+susan@Susanas-MacBook umafactorial % git add factorial.java
+susan@Susanas-MacBook umafactorial % git commit -m "implementacion recursiva"
+[recursivo e08f44f] implementacion recursiva
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+// 7. Subimos la rama recursivo al repositorio de GitHub, como vemos, usamos el git push, origin para el repositorio y el nombre de la rama:
+susan@Susanas-MacBook umafactorial % git push origin recursivo
+Enumerando objetos: 5, listo.
+Contando objetos: 100% (5/5), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (3/3), listo.
+Escribiendo objetos: 100% (3/3), 368 bytes | 368.00 KiB/s, listo.
+Total 3 (delta 1), reusados 0 (delta 0), pack-reusados 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'recursivo' on GitHub by visiting:
+remote:      https://github.com/susanfg/umafactorial/pull/new/recursivo
+remote: 
+To https://github.com/susanfg/umafactorial
+ * [new branch]      recursivo -> recursivo
+
+// 8. Volvemos a la rama main con git checkout, como es una rama que ya existe, no usamos la opción -b:
+susan@Susanas-MacBook umafactorial % git checkout main
+Cambiado a rama 'main'
+Tu rama está actualizada con 'origin/main'.
+
+// 9. Hemos modificado el método main()
+// 10. Añadimos la modificación mediante git add y git commit:
+susan@Susanas-MacBook umafactorial % git add factorial.java
+susan@Susanas-MacBook umafactorial % git commit -m "correccion numeros negativos"
+[main fc152cb] correccion numeros negativos
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+// 10. Enviamos los cambios mediante un push (rama main):
+susan@Susanas-MacBook umafactorial % git push origin main
+Enumerando objetos: 5, listo.
+Contando objetos: 100% (5/5), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (3/3), listo.
+Escribiendo objetos: 100% (3/3), 422 bytes | 422.00 KiB/s, listo.
+Total 3 (delta 1), reusados 0 (delta 0), pack-reusados 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/susanfg/umafactorial
+   0376f67..fc152cb  main -> main
+
+// 11. Realizamos una modificación en el método fact() recursivo, por lo que debemos cambiar a la rama recursivo mediante git checkout, añadir e incluir un mensaje:
+susan@Susanas-MacBook umafactorial % git checkout recursivo
+Cambiado a rama 'recursivo'
+susan@Susanas-MacBook umafactorial % git add factorial.java
+susan@Susanas-MacBook umafactorial % git commit -m "optimizacion"
+[recursivo f839ed4] optimizacion
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+// 12. Volvemos a la rama main para realizar la fusion y quedarnos con la version recursiva:
+susan@Susanas-MacBook umafactorial % git checkout main
+Cambiado a rama 'main'
+Tu rama está actualizada con 'origin/main'.
+
+// 12. Mezclamos los cambios con git merge recursivo
+susan@Susanas-MacBook umafactorial % git merge recursivo
+Auto-fusionando factorial.java
+ayuda: Esperando que tu editor cierre el archivo ... error: There was a problem with the editor 'vi'.
+No se realiza commit de fusión; usa 'git commit' para completar la fusión.
+susan@Susanas-MacBook umafactorial % git status
+En la rama main
+Tu rama está actualizada con 'origin/main'.
+
+Todos los conflictos resueltos pero sigues fusionando.
+  (usa "git commit" para concluir la fusión)
+
+Cambios a ser confirmados:
+	modificados:     factorial.java
+
+// No se producen conflictos, pero debemos añadir un mensaje mediante git commit para acabar con la fusion:
+susan@Susanas-MacBook umafactorial % git commit -m "fusion recursivo"
+[main 611fd49] fusion recursivo
+susan@Susanas-MacBook umafactorial % git status
+En la rama main
+Tu rama está adelantada a 'origin/main' por 3 commits.
+  (usa "git push" para publicar tus commits locales)
+
+nada para hacer commit, el árbol de trabajo está limpio
+
+// Con git log podemos ver los commits realizados:
+susan@Susanas-MacBook umafactorial % git log
+commit 611fd49f978b0020ec97d3737f3c156b6f5a432d (HEAD -> main)
+Merge: fc152cb f839ed4
+Author: susanfg <susanafernandez@uma.es>
+Date:   Fri Feb 10 19:55:55 2023 +0100
+
+    fusion recursivo
+
+commit f839ed4e82c591e163afc141be3ff46c99c03bbd (recursivo)
+Author: susanfg <susanafernandez@uma.es>
+Date:   Fri Feb 10 19:48:40 2023 +0100
+
+    optimizacion
+
+commit fc152cb654d1ebb355ef74a121686906f1ea9ca9 (origin/main, origin/HEAD)
+Author: susanfg <susanafernandez@uma.es>
+Date:   Fri Feb 10 19:46:57 2023 +0100
+
+    correccion numeros negativos
+
+commit e08f44f66291a317887b2db76e72f7346514150f (origin/recursivo)
+Author: susanfg <susanafernandez@uma.es>
+Date:   Fri Feb 10 19:43:04 2023 +0100
+
+susan@Susanas-MacBook umafactorial % 
+
+// Con push subimos los cambios realizados a GitHub:
+susan@Susanas-MacBook umafactorial % git push origin main
+Enumerando objetos: 10, listo.
+Contando objetos: 100% (10/10), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (6/6), listo.
+Escribiendo objetos: 100% (6/6), 669 bytes | 669.00 KiB/s, listo.
+Total 6 (delta 2), reusados 0 (delta 0), pack-reusados 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/susanfg/umafactorial
+   fc152cb..611fd49  main -> main
+
+// 13. Creamos la rama refacIO y cambiamos el espacio de trabajo a esta:
+susan@Susanas-MacBook umafactorial % git checkout -b refacIO
+Cambiado a nueva rama 'refacIO'
+
+// 14. En el punto anterior modificamos el código para refactorizar la entrada en un método a parte del main. Añadimos los cambios y comentamos con un mensaje:
+susan@Susanas-MacBook umafactorial % git add factorial.java
+susan@Susanas-MacBook umafactorial % git commit -m "refactorizacion de metodo de entrada"
+[refacIO f93d47c] refactorizacion de metodo de entrada
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+// 15. Hemos refactorizado la salida del método main a otro método, pero no llegamos a añadir los cambios y efectuar el commit, por lo que debemos guardar el trabajo temporalmente en el stash con git stash:
+susan@Susanas-MacBook umafactorial % git stash
+Directorio de trabajo y estado de índice WIP on refacIO: f93d47c refactorizacion de metodo de entrada guardados
+
+// 15. Volvemos a la rama main para cambiar el tipo de datos de long a BigInteger:
+susan@Susanas-MacBook umafactorial % git checkout main
+Cambiado a rama 'main'
+Tu rama está actualizada con 'origin/main'.
+
+// 16. Añadimos la modificación con un mensaje 
+susan@Susanas-MacBook umafactorial % git add factorial.java
+susan@Susanas-MacBook umafactorial % git commit -m "camio de long a BigInteger"
+[main 3508567] camio de long a BigInteger
+ 1 file changed, 12 insertions(+), 10 deletions(-)
+
+// 16. Enviamos los cambios en la rama main al repositorio de GitHub:
+susan@Susanas-MacBook umafactorial % git push origin main
+Enumerando objetos: 5, listo.
+Contando objetos: 100% (5/5), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (3/3), listo.
+Escribiendo objetos: 100% (3/3), 636 bytes | 636.00 KiB/s, listo.
+Total 3 (delta 0), reusados 0 (delta 0), pack-reusados 0
+To https://github.com/susanfg/umafactorial
+   611fd49..3508567  main -> main
+
+// 16. Cambiamos a la rama refacIO y traemos lo que habíamos guardado en el stash con un git stash pop:
+susan@Susanas-MacBook umafactorial % git checkout refacIO
+Cambiado a rama 'refacIO'
+susan@Susanas-MacBook umafactorial % git stash pop
+En la rama refacIO
+Cambios no rastreados para el commit:
+  (usa "git add <archivo>..." para actualizar lo que será confirmado)
+  (usa "git restore <archivo>..." para descartar los cambios en el directorio de trabajo)
+	modificados:     factorial.java
+
+sin cambios agregados al commit (usa "git add" y/o "git commit -a")
+Descartado refs/stash@{0} (2617bd6711692ff417332b705485f1c4904ebe86)
+
+// 16. Recuperamos los cambios del stash, los añadimos y comentamos.
+susan@Susanas-MacBook umafactorial % git add factorial.java
+susan@Susanas-MacBook umafactorial % git commit -m "refactorizacion en metodo de salida"
+[refacIO 547b628] refactorizacion en metodo de salida
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+// 17. Queremos integrar los cambios de la rama refacIO en la rama main, cambiamos al espacio de trabajo de main:
+susan@Susanas-MacBook umafactorial % git checkout main
+Cambiado a rama 'main'
+Tu rama está actualizada con 'origin/main'.
+
+// 17. Mezclamos los cambios de refacIO:
+susan@Susanas-MacBook umafactorial % git merge refacIO
+
+// 18. El mezclado presenta conflictos que git no puede resolver, pues con reacio movimos algunas líneas del método main() a métodos separados, por lo que debemos mover las líneas con sentencias que usan variables de tipo BigInteger, sobre-escribiendo con cada una la línea correspondiente que use variables de tipo long. También debemos cambiar todas las apariciones de long a BigInteger y eliminar líneas redundantes:
+Auto-fusionando factorial.java
+CONFLICTO (contenido): Conflicto de fusión en factorial.java
+Fusión automática falló; arregle los conflictos y luego realice un commit con el resultado.
+
+// 19. Tras modificar el fichero, añadimos los cambios y realizamos un commit:
+susan@Susanas-MacBook umafactorial % git add factorial.java
+susan@Susanas-MacBook umafactorial % git commit -m "mezcla de rama refacIO"
+[main f02330f] mezcla de rama refacIO
+
+// 19. Enviamos los cambios en la rama main al repositorio de GitHub:
+susan@Susanas-MacBook umafactorial % git push origin main
+Enumerando objetos: 13, listo.
+Contando objetos: 100% (13/13), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (9/9), listo.
+Escribiendo objetos: 100% (9/9), 1.15 KiB | 1.15 MiB/s, listo.
+Total 9 (delta 3), reusados 0 (delta 0), pack-reusados 0
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+To https://github.com/susanfg/umafactorial
+   3508567..f02330f  main -> main
+// 20. Creamos este fichero y lo añadimos al repositorio:
+susan@Susanas-MacBook umafactorial % touch comandos-git.txt
+susan@Susanas-MacBook umafactorial % git add comandos-git.txt
+susan@Susanas-MacBook umafactorial % 
+
+// 21. Después de editar este fichero hacemos un git commit -m 
+// 22. Para finalizar, queremos que el resto de empleados dispongan del repositorio, sincronizamos todas las ramas del repositorio local con el repositorio de GitHub mediante el comando:
